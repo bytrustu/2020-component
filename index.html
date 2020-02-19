@@ -5,7 +5,7 @@
   <title>Title</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./normalize.css">
+  <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./fontawesome/css/all.min.css">
   <link rel="stylesheet" href="./font.css">
   <link rel="stylesheet" href="./layout.css">
@@ -20,13 +20,36 @@
   <a class="logo-container">
     <h1 class="logo-text">POLICE IVTS</h1>
   </a>
+  <div class="task-container">
+      <span id="activity" class="task-button activity-dropdown">
+        <i class="fa fa-exclamation"></i>
+        <b class="badge" id="user_notice_count">0</b>
+      </span>
+
+    <span class="task-button logout  ml-2" onclick="logout();">
+        <i class="fas fa-sign-out-alt"></i>
+      </span>
+    <span id="apply_filter" class="task-button  ml-1" data-on="false" onclick="applyFilter();">
+        <span class="blur_filter off"></span>
+      </span>
+    <div class="search-group">
+      <input id="search-fld" class="ml-1" type="text" placeholder="키워드, Hash, IP 등 통합검색">
+      <button type="button" id="search-header" class="align-middle" onclick="searchHeader();">
+        <i class="fa fa-search color-stop"></i>
+      </button>
+    </div>
+  </div>
+
+
+
 </header>
 
-<aside class="sidebar">
+<aside class="sidebar" data-visible="true">
+  <span class="hide-side-button" >👈</span>
   <div class="system-container">
     <img class="system-image" src="./경찰청logo.png" alt="경찰청로고">
     <h2 class="system-text mt-2">불법촬영물등</h2>
-    <h2 class="system-text">추적시스템</h2>
+    <h2 class="system-text mt-1">추적시스템</h2>
   </div>
   <a class="userinfo-container">
     <h5 class="userinfo-text d-inline-block ml-4">조용준 수사관</h5><span class="float-right mr-2">👮</span>
@@ -222,14 +245,134 @@
     </ul>
   </div>
 </aside>
+
+<section class="main-container">
+    <div class="row subject-container">
+      <img class="subject-image" src="./dashboard.svg" alt="제목창아이콘">
+      <span class="subject-title">대쉬보드</span>
+    </div>
+
+  <div class="tabgroup_wrap mt-4">
+    <ul class="nav nav-tabs tabgroup">
+      <li class="nav-item active" data-name="section_1">
+        <span class="nav-link">메인</span>
+      </li>
+      <li class="nav-item" data-name="section_2">
+        <span class="nav-link">통계</span>
+      </li>
+    </ul>
+  </div>
+
+  <article class="main-content row mt-4" id="section_0">
+    <div class="col-2" ><div style="height: 100px;">1</div></div>
+    <div class="col-2" ><div style="height: 100px;">2</div></div>
+    <div class="col-2" ><div style="height: 100px;">3</div></div>
+    <div class="col-2" ><div style="height: 100px;">4</div></div>
+    <div class="col-2" ><div style="height: 100px;">5</div></div>
+    <div class="col-2" ><div style="height: 100px;">6</div></div>
+  </article>
+
+  <article class="main-content row mt-4" id="section_1">
+    <div class="col-4 bg-primary" style="height: 200px">
+      <div style="width: 100%; height: 100%; background-color: #fff">sectioin1</div>
+    </div>
+    <div class="col-4 bg-danger" style="height: 300px">
+      <div style="width: 100%; height: 100%; background-color: #fff"></div>
+    </div>
+    <div class="col-4 bg-success" style="height: 400px">
+      <div style="width: 100%; height: 100%; background-color: #fff"></div>
+    </div>
+  </article>
+
+  <article class="main-content row mt-4" id="section_2">
+    <div class="col-4" style="height: 200px">
+      <div style="width: 100%; height: 100%; background-color: #fff">sectioin2</div>
+    </div>
+    <div class="col-4" style="height: 300px">
+      <div style="width: 100%; height: 100%; background-color: #fff"></div>
+    </div>
+    <div class="col-4" style="height: 400px">
+      <div style="width: 100%; height: 100%; background-color: #fff"></div>
+    </div>
+  </article>
+
+
+
+
+
+</section>
+
+<footer class="footer-container">
+  <ul class="link_lst">
+    <li>
+      <a href="">
+        <strong>권리지침안내서</strong>
+      </a>
+    </li>
+  </ul>
+  <p class="copyright">ⓒ<a class="mx-1" href="http://codeline.kr" target="_blank">CODELINE Corp.</a> All rights reserved.</p>
+</footer>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script>
-  $(".sub-menu > ul").css('display', 'none');
-  $(".menu-container .sub-menu > a").click(function(e) {
-    $(".menu-container ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
-            e.stopPropagation()
-  })
+  $('.sub-menu > ul').css('display', 'none');
+  $('.menu-container .sub-menu > a').click(function(e) {
+    $('.menu-container ul ul').slideUp();
+    $(this).next().is(":visible") || $(this).next().slideDown();
+    const offset = $(this).offset();
+    $('html, body').animate({
+      scrollTop: offset.top
+    }, 400);
+    e.stopPropagation();
+  });
+
+  $('.nav-item').on('click', function () {
+    const self = $(this);
+    const item_list = $('.nav-item');
+    item_list.map((i, v) => {
+      $(v).removeClass('active');
+      const name = $(v).attr('data-name');
+      $(`#${name}`).addClass('d-none');
+    });
+    self.addClass('active');
+    const targetId = self.attr('data-name');
+    console.log(targetId)
+    $(`#${targetId}`).removeClass('d-none');
+  });
+
+  $('body').css('height', `${window.innerHeight}px`);
+  const onHideMenu = _ => {
+    const sidebarEl = $('.sidebar');
+    const hideEl = $('.hide-side-button');
+    const mainEl = $('.main-container');
+    const isVisible = sidebarEl.data('visible');
+    if (isVisible) {
+      sidebarEl.addClass('hide-menu');
+      sidebarEl.data('visible', false);
+      mainEl.css('width', '100%');
+      hideEl.text('👉');
+    } else {
+      sidebarEl.removeClass('hide-menu');
+      sidebarEl.data('visible', true);
+      mainEl.css('width', 'calc(100% - 260px)');
+      hideEl.text('👈');
+    }
+  }
+
+  const applyFilter = _ => {
+    const applyEl = $('#apply_filter');
+    const isOn = applyEl.data('on');
+    if (isOn) {
+      applyEl.data('on', false);
+      applyEl.removeClass('on');
+    } else {
+      applyEl.data('on', true);
+      applyEl.addClass('on');
+    }
+  }
+  $('.hide-side-button').on('click', onHideMenu);
 </script>
 
 </body>
