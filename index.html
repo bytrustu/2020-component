@@ -39,9 +39,6 @@
       </button>
     </div>
   </div>
-
-
-
 </header>
 
 <aside class="sidebar" data-visible="true">
@@ -249,11 +246,11 @@
 <section class="main-container">
     <div class="row subject-container">
       <img class="subject-image" src="./dashboard.svg" alt="제목창아이콘">
-      <span class="subject-title">대쉬보드</span>
+      <span class="subject-title">대시보드</span>
     </div>
 
-  <div class="tabgroup_wrap mt-4">
-    <ul class="nav nav-tabs tabgroup">
+  <div class="tab_container mt-4">
+    <ul class="nav nav-tabs">
       <li class="nav-item active" data-target="section_1">
         <span class="nav-link">메인</span>
       </li>
@@ -263,58 +260,213 @@
     </ul>
   </div>
 
-  <article class="main-content row mt-4" id="section_0">
-    <div class="col-2" ><div style="height: 100px;">1</div></div>
-    <div class="col-2" ><div style="height: 100px;">2</div></div>
-    <div class="col-2" ><div style="height: 100px;">3</div></div>
-    <div class="col-2" ><div style="height: 100px;">4</div></div>
-    <div class="col-2" ><div style="height: 100px;">5</div></div>
-    <div class="col-2" ><div style="height: 100px;">6</div></div>
+  <article class="main-content  mt-4" id="section_1">
+    <div class="row search-container" style="padding-left: 10px">
+      <select class="form-control d-inline-block align-middle" style="width: 120px;">
+        <option value="all">전체 상태</option>
+        <option value="wait">삭제대기중</option>
+        <option value="run">삭제요청중</option>
+        <option value="end">삭제완료</option>
+      </select>
+
+      <input class="form-control d-inline-block align-middle ml-1" type="text">
+
+      <div class="radio-container ml-1" style="background-color: #fff;">
+        <label class="radio">
+          <input type="radio" name="consultation_remove_target_filter_type" value="site" checked="checked">
+          <i></i>성인사이트 <span id="consultation_remove_target_site_total"></span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="consultation_remove_target_filter_type" value="sns">
+          <i></i>SNS <span id="consultation_remove_target_sns_total"></span>
+        </label>
+        <label class="radio" style="margin-right: 5px;">
+          <input type="radio" name="consultation_remove_target_filter_type" value="manual">
+          <i></i>수동 <span id="consultation_remove_target_manual_total"></span>
+        </label>
+      </div>
+
+      <div class="datepicker-container ml-1 p-0">
+        <input type="text" class="form-control" readonly>
+        <span class="d-inline-block align-middle tilde">~</span>
+        <input type="text" class="form-control" readonly>
+      </div>
+
+      <button type="button" class="btn btn-primary ml-1">등록</button>
+      <button type="button" class="btn btn-danger ml-1">삭제</button>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-2" >
+        <div class="main-banner">
+          <h4 class="banner-title">내사 중인 사건</h4>
+          <h5 class="banner-content mt-3">사건번호 미기입</h5>
+          <p class="banner-amount mt-3">
+            <span class="banner-count">0</span>
+            <span class="banner-text">건</span>
+          </p>
+        </div>
+      </div>
+      <div class="col-2" >
+        <div class="main-banner">
+          <h4 class="banner-title">수사 중인 사건</h4>
+          <h5 class="banner-content mt-3">사건번호 기입</h5>
+          <p class="banner-amount mt-3">
+            <span class="banner-count">0</span>
+            <span class="banner-text">건</span>
+          </p>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="main-banner">
+          <h4 class="banner-title">미검</h4>
+          <h5 class="banner-content mt-3">내사종결, 기소중지, 내사중지</h5>
+          <p class="banner-amount mt-3">
+            <span class="banner-count">0</span>
+            <span class="banner-text">건</span>
+          </p>
+          <div class="banner-variance">
+            <p><span><i class="fas fa-arrow-up"></i></span><span class="ml-1 banner-change">0</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="main-banner">
+          <h4 class="banner-title">사건종결</h4>
+          <h5 class="banner-content mt-3">구속, 불구속, 즉심, 불기소</h5>
+          <p class="banner-amount mt-3">
+            <span class="banner-count">0</span>
+            <span class="banner-text">건</span>
+          </p>
+          <div class="banner-detail">
+            <p><span>구속</span><span class="ml-1">0</span><span>건</span></p>
+          </div>
+          <div class="banner-variance">
+            <p><span><i class="fas fa-arrow-up"></i></span><span class="ml-1 banner-change">0</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="main-banner">
+          <h4 class="banner-title">60일경과</h4>
+          <h5 class="banner-content mt-3">사건 개시 후 60일 경과</h5>
+          <p class="banner-amount mt-3">
+            <span class="banner-count">0</span>
+            <span class="banner-text">건</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="main-banner">
+          <h4 class="banner-title">검거율</h4>
+          <h5 class="banner-content mt-3"></h5>
+          <p class="banner-amount mt-3">
+            <span class="banner-count">0</span>
+            <span class="banner-text">%</span>
+          </p>
+          <div class="banner-detail">
+            <p>
+              <span>구속</span><span class="ml-1">0</span><span>건</span>
+            </p>
+            <p>
+              <span>불구속</span><span class="ml-1">0</span><span>건</span>
+            </p>
+            <p>
+              <span>불기소</span><span class="ml-1">0</span><span>건</span>
+            </p>
+            <p>
+              <span>즉결심판</span><span class="ml-1">0</span><span>건</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 step-1">
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <h4 class="summary-title">내 영상정보</h4>
+        </div>
+      </div>
+      <div class="col-6 step-2">
+        <div class="row">
+          <div class="summary-conatiner">
+            <img class="float-right  link-icon" src="./plus.svg" onclick="">
+            <h4 class="summary-title">공지사항</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="summary-conatiner">
+            <img class="float-right  link-icon" src="./plus.svg" onclick="">
+            <h4 class="summary-title">내 수사정보</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </article>
 
-  <article class="main-content row mt-1" id="section_1">
-    <div class="col-4 " style="height: 200px">
-      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
-        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+  <article class="main-content mt-1 d-none" id="section_2">
+    <div class="row">
+      <div class="col-6" >
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+        </div>
+      </div>
+      <div class="col-6" >
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+        </div>
       </div>
     </div>
-    <div class="col-4 " style="height: 200px">
-      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
-        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+
+    <div class="row">
+      <div class="col-4 " >
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+        </div>
+      </div>
+      <div class="col-4 " >
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+        </div>
+      </div>
+      <div class="col-4 " >
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+        </div>
       </div>
     </div>
-    <div class="col-4 " style="height: 200px">
-      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
-        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+
+    <div class="row">
+      <div class="col-3" >
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+        </div>
+      </div>
+      <div class="col-3" >
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+        </div>
+      </div>
+      <div class="col-3" >
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+        </div>
+      </div>
+      <div class="col-3" >
+        <div class="summary-conatiner">
+          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+        </div>
       </div>
     </div>
   </article>
-
-  <article class="main-content row mt-1" id="section_2">
-    <div class="col-3" style="height: 200px">
-      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
-        <img class="float-right  link-icon" src="./plus.svg" onclick="">
-      </div>
-    </div>
-    <div class="col-3" style="height: 200px">
-      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
-        <img class="float-right  link-icon" src="./plus.svg" onclick="">
-      </div>
-    </div>
-    <div class="col-3" style="height: 200px">
-      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
-        <img class="float-right  link-icon" src="./plus.svg" onclick="">
-      </div>
-    </div>
-    <div class="col-3" style="height: 200px">
-      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
-        <img class="float-right  link-icon" src="./plus.svg" onclick="">
-      </div>
-    </div>
-  </article>
-
-
-
 
 
 </section>
@@ -371,16 +523,24 @@
     const sidebarEl = $('.sidebar');
     const hideEl = $('.hide-side-button');
     const mainEl = $('.main-container');
+
+    const leftEl = $('.sidebar, .logo-container');
+    const rightEl = $('.main-container, .task-container');
+
+    const logoEl = $('.logo-container');
+    const taskEl = $('.task-container');
     const isVisible = sidebarEl.data('visible');
     if (isVisible) {
-      sidebarEl.addClass('hide-menu');
+      leftEl.addClass('hide-menu');
       sidebarEl.data('visible', false);
-      mainEl.css('width', '100%');
+      rightEl.css('margin-left', '0');
+      rightEl.css('width', '100%');
       hideEl.text('👉');
     } else {
-      sidebarEl.removeClass('hide-menu');
+      leftEl.removeClass('hide-menu');
       sidebarEl.data('visible', true);
-      mainEl.css('width', 'calc(100% - 260px)');
+      rightEl.css('margin-left', '200px');
+      rightEl.css('width', 'calc(100% - 200px)');
       hideEl.text('👈');
     }
   }
@@ -397,7 +557,12 @@
     }
   }
   $('.hide-side-button').on('click', onHideMenu);
-</script>
+
+  const match = matcher => x => Object.entries(matcher).every(([k, v]) => x[k] === v);
+  const pred = match({a:"a", c:"c"})
+
+
+  </script>
 
 </body>
 </html>

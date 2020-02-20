@@ -50,7 +50,7 @@ body {
 #apply_filter {
   background-color: #ffe3e3;
   padding-top: 7px;
-  border: 1px solid #ccc;
+  border: 1px solid #ececec;
 }
 
 #apply_filter.on {
@@ -87,7 +87,7 @@ body {
 
 .search-group #search-fld {
   vertical-align: middle;
-  border: 1px solid #ccc;
+  border: 1px solid #ececec;
   height: 100%;
   padding-left: 5px;
   font-size: 12px;
@@ -102,7 +102,7 @@ body {
   border: unset;
   height: 100%;
   background-color: #ffffff;
-  border: 1px solid #ccc;
+  border: 1px solid #ececec;
   border-left: unset;
   color: #ababab ;
 }

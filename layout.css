@@ -1,6 +1,6 @@
 .header {
     position: relative;
-    min-width: 1450px;
+    min-width: 1400px;
     height: 60px;
 }
 
@@ -9,12 +9,13 @@
 }
 
 .header .logo-container {
-    width: 260px;
+    position: absolute;
+    width: 200px;
     height: 100%;
     border-right: 1px solid #ccc;
     background-color: #357dde;
     cursor: pointer;
-    float: left;
+    transition: all 0.3s ease-in-out;
 }
 
 .header .logo-container .logo-image {
@@ -26,28 +27,26 @@
     color: #fff;
     font-size: 20px;
     font-weight: 600;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
     text-align: center;
     margin-top: 20px;
 }
 
 .header .task-container {
-    float: left;
-    width: calc(100% - 260px);
+    width: calc(100% - 200px);
+    min-width: 1400px;
     height: 100%;
+    margin-left: 200px;
     background-color: #f4f4f4;
     padding: 15px;
-}
-
-.sidebar-toggle {
-    margin-left: -240px;
+    transition: all 0.3s ease-in-out;
 }
 
 .sidebar {
-    position: relative;
+    position: absolute;
     display: inline-block;
     float: left;
-    width: 260px;
+    width: 200px;
     height: auto;
     min-height: calc(100% - 60px);
     background: #fff;
@@ -57,14 +56,13 @@
     z-index: 100;
 }
 
-.sidebar.hide-menu {
-    margin-left: -260px;
-}
+.sidebar.hide-menu,
+.logo-container.hide-menu{ margin-left: -200px; }
 
 .sidebar .hide-side-button {
     display: inline-block;
     position: absolute;
-    left: 240px;
+    left: 180px;
     top: 790px;
     width: 40px;
     height: 40px;
@@ -205,10 +203,11 @@
 }
 
 .main-container {
-    display: inline-block;
-    width: calc(100% - 260px);
+    display: block;
+    width: calc(100% - 200px);
+    min-width: 1400px;
+    margin-left: 200px;
     vertical-align: top;
-    float: left;
     padding: 20px 40px 40px;
     transition: all 0.3s ease-in-out;
 }
@@ -217,6 +216,8 @@
     z-index: 200;
     bottom: 0;
     height: 40px;
+    width: 100%;
+    min-width: 1400px;
     background-color: #f4f4f4;
     width: 100%;
     position: fixed;
