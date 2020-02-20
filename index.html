@@ -29,7 +29,7 @@
     <span class="task-button logout  ml-2" onclick="logout();">
         <i class="fas fa-sign-out-alt"></i>
       </span>
-    <span id="apply_filter" class="task-button  ml-1" data-on="false" onclick="applyFilter();">
+    <span id="apply_filter" class="task-button  ml-1" data-on="false" onclick="onApplyFilter();">
         <span class="blur_filter off"></span>
       </span>
     <div class="search-group">
@@ -254,10 +254,10 @@
 
   <div class="tabgroup_wrap mt-4">
     <ul class="nav nav-tabs tabgroup">
-      <li class="nav-item active" data-name="section_1">
+      <li class="nav-item active" data-target="section_1">
         <span class="nav-link">메인</span>
       </li>
-      <li class="nav-item" data-name="section_2">
+      <li class="nav-item" data-target="section_2">
         <span class="nav-link">통계</span>
       </li>
     </ul>
@@ -272,27 +272,44 @@
     <div class="col-2" ><div style="height: 100px;">6</div></div>
   </article>
 
-  <article class="main-content row mt-4" id="section_1">
-    <div class="col-4 bg-primary" style="height: 200px">
-      <div style="width: 100%; height: 100%; background-color: #fff">sectioin1</div>
+  <article class="main-content row mt-1" id="section_1">
+    <div class="col-4 " style="height: 200px">
+      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
+        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+      </div>
     </div>
-    <div class="col-4 bg-danger" style="height: 300px">
-      <div style="width: 100%; height: 100%; background-color: #fff"></div>
+    <div class="col-4 " style="height: 200px">
+      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
+        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+      </div>
     </div>
-    <div class="col-4 bg-success" style="height: 400px">
-      <div style="width: 100%; height: 100%; background-color: #fff"></div>
+    <div class="col-4 " style="height: 200px">
+      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
+        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+      </div>
     </div>
   </article>
 
-  <article class="main-content row mt-4" id="section_2">
-    <div class="col-4" style="height: 200px">
-      <div style="width: 100%; height: 100%; background-color: #fff">sectioin2</div>
+  <article class="main-content row mt-1" id="section_2">
+    <div class="col-3" style="height: 200px">
+      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
+        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+      </div>
     </div>
-    <div class="col-4" style="height: 300px">
-      <div style="width: 100%; height: 100%; background-color: #fff"></div>
+    <div class="col-3" style="height: 200px">
+      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
+        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+      </div>
     </div>
-    <div class="col-4" style="height: 400px">
-      <div style="width: 100%; height: 100%; background-color: #fff"></div>
+    <div class="col-3" style="height: 200px">
+      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
+        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+      </div>
+    </div>
+    <div class="col-3" style="height: 200px">
+      <div class="summary-conatiner" style="width: 100%; height: 100%; background-color: #fff">
+        <img class="float-right  link-icon" src="./plus.svg" onclick="">
+      </div>
     </div>
   </article>
 
@@ -329,16 +346,23 @@
   });
 
   $('.nav-item').on('click', function () {
+    const initElement = el => {
+      $(el).removeClass('active');
+      const target = $(el).data('target');
+      if (!$(`#${target}`).hasClass('d-none')) {
+        $(`#${target}`).addClass('d-none');
+      }
+    }
+
     const self = $(this);
     const item_list = $('.nav-item');
-    item_list.map((i, v) => {
-      $(v).removeClass('active');
-      const name = $(v).attr('data-name');
-      $(`#${name}`).addClass('d-none');
+
+    item_list.map((idx, element) => {
+      initElement(element);
     });
+
     self.addClass('active');
-    const targetId = self.attr('data-name');
-    console.log(targetId)
+    const targetId = self.data('target');
     $(`#${targetId}`).removeClass('d-none');
   });
 
@@ -361,7 +385,7 @@
     }
   }
 
-  const applyFilter = _ => {
+  const onApplyFilter = _ => {
     const applyEl = $('#apply_filter');
     const isOn = applyEl.data('on');
     if (isOn) {
