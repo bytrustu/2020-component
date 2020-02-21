@@ -3,6 +3,7 @@
 .btn {
     border: unset;
     border-radius: 1px;
+    font-size: 14px;
 }
 
 .btn-primary { background-color: #357dde; }
@@ -370,14 +371,6 @@ input[type="checkbox"]:checked + i:after {
     padding: 20px 25px;
 }
 
- .summary-conatiner .link-icon {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-}
-
-.summary-conatiner .link-icon:after { clear: right }
-
 .summary-conatiner .summary-title {
     font-size: 16px;
     font-weight: 500;
@@ -460,4 +453,71 @@ input[type="checkbox"]:checked + i:after {
 .note:before{
     content: '🔖';
     margin-right: 5px;
+}
+
+.plus-icon {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #ddd;
+    text-align: center;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+
+.plus-icon:hover {
+    background-color: #d2d2d2;
+}
+
+.plus-icon i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 13px;
+}
+
+
+.table-basic {
+    border: unset;
+}
+
+.table.table-ellipsis {
+    table-layout: fixed;
+}
+
+.table.table-ellipsis td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-basic th,
+.table-basic td {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #222;
+}
+
+.table-basic thead th {
+    background-color: #f4f4f4;
+    border: unset;
+    line-height: 16px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-basic tbody td {
+    border-top: 1px solid #ececec !important;
+    cursor: pointer;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+.table-basic tbody tr:hover {
+    background-color: #f9f9f9;
 }

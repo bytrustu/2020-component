@@ -263,6 +263,100 @@
 
   <article class="main-content  mt-4" id="section_1" data-container="dashboard">
 
+    <div class="row">
+      <table class="table table-basic table-ellipsis margin-top-10">
+        <thead>
+        <tr>
+          <th class="">
+            <label class="checkbox">
+              <input type="checkbox" value="all_checked">
+              <i></i>
+            </label>
+          </th>
+          <th class="">
+            순번
+          </th>
+          <th class="">
+            신분
+          </th>
+          <th class="">
+            담당자
+          </th>
+          <th class="" style="width: 100px">
+            내담자번호
+          </th>
+          <th class="">
+            성명
+          </th>
+          <th class="">
+            생년월일
+          </th>
+          <th class="">
+            국적
+          </th>
+          <th class="">
+            휴대전화
+          </th>
+          <th class="">
+            이메일
+          </th>
+          <th class="">
+            등록일시
+          </th>
+          <th class="">
+            기능
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="">
+            <label class="checkbox">
+              <input type="checkbox" value="all">
+              <i></i>
+            </label>
+          </td>
+          <td class="">1</td>
+          <td class=""><span class="color-blue">내담자</span></td>
+          <td class="">박희원(a20180042)</td>
+          <td class="">200219-9-01-나</td>
+          <td class="" onclick="getPeopleInfoBox(19202);">불상</td>
+          <td class="">알수없음</td>
+          <td class=""><span class="color-blue">내국인</span></td>
+          <td class="" title="">불상</td>
+          <td class="" title="">불상</td>
+          <td class="">2020-02-19 10:48:24</td>
+          <td class="align-left">
+            <a href="javascript:void(0);" onclick="openNewTab('/consultation/6371');" class="btn btn-primary" data-target="6371">상담확인</a>
+            <a href="javascript:void(0);" onclick="openNewTab('/consultation/6371');" class="btn btn-danger" data-target="6371">상담확인</a>
+            <a href="javascript:void(0);" onclick="openNewTab('/consultation/6371');" class="btn btn-default" data-target="6371">상담확인</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="">
+            <label class="checkbox">
+              <input type="checkbox" value="all">
+              <i></i>
+            </label>
+          </td>
+          <td class="">2</td>
+          <td class=""><span class="color-blue">내담자</span></td>
+          <td class="">박희원(a20180042)</td>
+          <td class="">200219-9-01-가</td>
+          <td class="" onclick="getPeopleInfoBox(19197);">알수없음</td>
+          <td class="">알수없음</td>
+          <td class=""><span class="color-blue">내국인</span></td>
+          <td class="" title="">불상</td>
+          <td class="" title="">불상</td>
+          <td class="">2020-02-19 10:46:14</td>
+          <td class="align-left"><a href="javascript:void(0);" onclick="openNewTab('/consultation/6371');" class="btn btn-primary" data-target="6371">상담확인</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
     <div class="row mb-5">
       <small class="note">영상 수집시 함께 수집된 게시글정보, 제목, 영상 Hash정보 등을 통합검색합니다.</small>
     </div>
@@ -413,20 +507,20 @@
     <div class="row">
       <div class="col-6 step-1">
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
           <h4 class="summary-title">내 영상정보</h4>
         </div>
       </div>
       <div class="col-6 step-2">
         <div class="row">
           <div class="summary-conatiner">
-            <img class="float-right  link-icon" src="./plus.svg" onclick="">
+            <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
             <h4 class="summary-title">공지사항</h4>
           </div>
         </div>
         <div class="row">
           <div class="summary-conatiner">
-            <img class="float-right  link-icon" src="./plus.svg" onclick="">
+            <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
             <h4 class="summary-title">내 수사정보</h4>
           </div>
         </div>
@@ -439,12 +533,12 @@
     <div class="row">
       <div class="col-6" >
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
         </div>
       </div>
       <div class="col-6" >
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
         </div>
       </div>
     </div>
@@ -452,17 +546,17 @@
     <div class="row">
       <div class="col-4 " >
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
         </div>
       </div>
       <div class="col-4 " >
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
         </div>
       </div>
       <div class="col-4 " >
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
         </div>
       </div>
     </div>
@@ -470,22 +564,22 @@
     <div class="row">
       <div class="col-3" >
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
         </div>
       </div>
       <div class="col-3" >
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
         </div>
       </div>
       <div class="col-3" >
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
         </div>
       </div>
       <div class="col-3" >
         <div class="summary-conatiner">
-          <img class="float-right  link-icon" src="./plus.svg" onclick="">
+          <span class="plus-icon float-right"><i class="fas fa-plus"></i></span>
         </div>
       </div>
     </div>
@@ -581,6 +675,17 @@
     }
   }
   $('.hide-side-button').on('click', onHideMenu);
+
+  // 테이블 all_checked
+  $('table input[type="checkbox"][value="all_checked"]').change(function(){
+    const isChecked = $(this).prop('checked');
+    const checkboxList = $(this).parents('table').find('input[type="checkbox"]');
+    Object.entries(checkboxList).forEach(([idx, el]) => {
+      if ( !isNaN(idx) ) {
+        $(el).prop('checked', isChecked);
+      }
+    });
+  });
 
   const match = matcher => x => Object.entries(matcher).every(([k, v]) => x[k] === v);
   const pred = match({a:"a", c:"c"})
