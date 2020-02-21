@@ -131,7 +131,6 @@ input[type=text]:disabled {
     margin-top: 0;
     margin-bottom: 4px;
     padding-left: 4px;
-    line-height: 22px;
     color: #404040;
     cursor: pointer;
     font-size: 13px;
@@ -139,6 +138,7 @@ input[type=text]:disabled {
 
 .radio input {
     vertical-align: middle;
+    visibility: hidden;
 }
 
 .radio input+i:after {
@@ -173,10 +173,19 @@ input[type=text]:disabled {
     opacity: 1;
 }
 
+.radio span, .checkbox span {
+    margin-top: 4px;
+    display: inline-block;
+}
+
 
 .checkbox {
     display: inline-block;
     position: relative;
+}
+
+.checkbox input {
+    visibility: hidden;
 }
 
 .checkbox i {
