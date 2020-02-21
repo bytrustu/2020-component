@@ -41,6 +41,7 @@
   </div>
 </header>
 
+<div style="height: auto">
 <aside class="sidebar" data-visible="true">
   <span class="hide-side-button" >👈</span>
   <div class="system-container">
@@ -250,7 +251,7 @@
     </div>
 
   <div class="tab_container mt-4">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" data-target="dashboard">
       <li class="nav-item active" data-target="section_1">
         <span class="nav-link">메인</span>
       </li>
@@ -260,9 +261,14 @@
     </ul>
   </div>
 
-  <article class="main-content  mt-4" id="section_1">
+  <article class="main-content  mt-4" id="section_1" data-container="dashboard">
+
+    <div class="row mb-5">
+      <small class="note">영상 수집시 함께 수집된 게시글정보, 제목, 영상 Hash정보 등을 통합검색합니다.</small>
+    </div>
+
     <div class="row search-container" style="padding-left: 10px">
-      <select class="form-control d-inline-block align-middle" style="width: 120px;">
+      <select class="form-control align-middle">
         <option value="all">전체 상태</option>
         <option value="wait">삭제대기중</option>
         <option value="run">삭제요청중</option>
@@ -273,18 +279,34 @@
 
       <div class="radio-container ml-1" style="background-color: #fff;">
         <label class="radio">
-          <input type="radio" name="consultation_remove_target_filter_type" value="site" checked="checked">
-          <i></i>성인사이트 <span id="consultation_remove_target_site_total"></span>
+          <input type="radio" name="filter_type" value="site" checked>
+          <i></i><span>성인사이트</span>
         </label>
         <label class="radio">
-          <input type="radio" name="consultation_remove_target_filter_type" value="sns">
-          <i></i>SNS <span id="consultation_remove_target_sns_total"></span>
+          <input type="radio" name="filter_type" value="sns">
+          <i></i><span>SNS</span>
         </label>
-        <label class="radio" style="margin-right: 5px;">
-          <input type="radio" name="consultation_remove_target_filter_type" value="manual">
-          <i></i>수동 <span id="consultation_remove_target_manual_total"></span>
+        <label class="radio">
+          <input type="radio" name="filter_type" value="manual">
+          <i></i><span>수동</span>
         </label>
       </div>
+
+      <div class="checkbox-container ml-1">
+        <label class="checkbox">
+          <input type="checkbox" value="site">
+          <i></i><span>성인사이트</span>
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" value="sns">
+          <i></i><span>SNS</span>
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" value="manual">
+          <i></i><span>수동</span>
+        </label>
+      </div>
+
 
       <div class="datepicker-container ml-1 p-0">
         <input type="text" class="form-control" readonly>
@@ -292,6 +314,7 @@
         <input type="text" class="form-control" readonly>
       </div>
 
+      <button type="button" class="btn btn-default ml-1">검색</button>
       <button type="button" class="btn btn-primary ml-1">등록</button>
       <button type="button" class="btn btn-danger ml-1">삭제</button>
     </div>
@@ -412,7 +435,7 @@
 
   </article>
 
-  <article class="main-content mt-1 d-none" id="section_2">
+  <article class="main-content mt-1 d-none" id="section_2" data-container="dashboard">
     <div class="row">
       <div class="col-6" >
         <div class="summary-conatiner">
@@ -470,7 +493,7 @@
 
 
 </section>
-
+</div>
 <footer class="footer-container">
   <ul class="link_lst">
     <li>
@@ -498,17 +521,19 @@
   });
 
   $('.nav-item').on('click', function () {
+    const targetContainer = $(this).parent().data('target');
     const initElement = el => {
       $(el).removeClass('active');
       const target = $(el).data('target');
-      if (!$(`#${target}`).hasClass('d-none')) {
-        $(`#${target}`).addClass('d-none');
+      const isClass = $(`#${target}`).hasClass('d-none');
+      const containerEl = $(`#${target}[data-container="${targetContainer}"]`);
+      console.log(containerEl);
+      if (!isClass) {
+        containerEl.addClass('d-none');
       }
     }
-
     const self = $(this);
     const item_list = $('.nav-item');
-
     item_list.map((idx, element) => {
       initElement(element);
     });
@@ -518,7 +543,8 @@
     $(`#${targetId}`).removeClass('d-none');
   });
 
-  $('body').css('height', `${window.innerHeight}px`);
+  // $('body').css('height', `${window.innerHeight}px`);
+
   const onHideMenu = _ => {
     const sidebarEl = $('.sidebar');
     const hideEl = $('.hide-side-button');
@@ -527,8 +553,6 @@
     const leftEl = $('.sidebar, .logo-container');
     const rightEl = $('.main-container, .task-container');
 
-    const logoEl = $('.logo-container');
-    const taskEl = $('.task-container');
     const isVisible = sidebarEl.data('visible');
     if (isVisible) {
       leftEl.addClass('hide-menu');
