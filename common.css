@@ -37,7 +37,7 @@
     border-color: #bd2130;
 }
 
-.search-container {}
+.search-container { display: flex; }
 .search-container > div {
     border: 1px solid #ececec;
     width: auto;
